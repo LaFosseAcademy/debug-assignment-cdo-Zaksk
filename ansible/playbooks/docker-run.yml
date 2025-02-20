@@ -1,12 +1,18 @@
 - hosts: all
   become: true
   tasks:
+    - name: Ensure the devops-assessment directory exists
+      file:
+        path: /home/ec2-user/devops-assessment
+        state: directory
+      become: true
+
     - name: Navigate to directory containing docker-compose.yml
       shell: cd devops-assessment
       args:
         chdir: /home/ec2-user
 
     - name: Run docker-compose 
-      shell: docker-compose down -d
+      shell: docker-compose up
       args:
         chdir: /home/ec2-user/devops-assessment
