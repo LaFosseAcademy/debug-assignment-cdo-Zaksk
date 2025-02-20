@@ -12,9 +12,9 @@ provider "aws" {
 }
 
 resource "aws_instance" "http_server" {
-  ami = ""
+  ami = "al2023-ami-2023.6.20250211.0-kernel-6.1-x86_64"
   key_name = "default-ec2"
-  instance_type = ""
+  instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.http_server_sg.id]
   subnet_id = data.aws_subnets.default_subnets.ids[0]
   connection {
